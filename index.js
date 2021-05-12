@@ -3,8 +3,6 @@
 
 const { S3 } = require ('@aws-sdk/client-s3');
 const client = new S3({ region: 'us-west-2', aws_access_key_id: 'AKIAQWD5F3LGKMR4QWWI', aws_secret_access_key: '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' })
-// const command = new ListObjectsV2Command({ Bucket: 'brs-lab-17' });
-// const getObject = new GetObjectCommand({ Bucket: 'arn:aws:s3:us-west-2:047507167948:accesspoint/imagejson', Key: 'images.json' });
 
 exports.handler = async (event, context, callback) => {
 
@@ -13,13 +11,12 @@ exports.handler = async (event, context, callback) => {
   console.log('EVENT DETAILS!', JSON.stringify(event, undefined, 2));
 
   try {
-    // list all objects in brs-lab-17 bucket
-    // const data = await client.send(command);
-    const data = await client.listObjectsV2({ Bucket: 'brs-lab-17' }); // try this new way
 
-    // add those contents to pics array
-    const contents = data.Contents;
-    pics = contents.map((element) => {
+    // list all objects in brs-lab-17 bucket
+    const data = await client.listObjectsV2({ Bucket: 'brs-lab-17' });
+
+    // map those contents to pics array
+    pics = data.Contents.map((element) => {
       return {
         name: element.Key,
         size: element.Size,
@@ -27,8 +24,9 @@ exports.handler = async (event, context, callback) => {
       }
     })
     console.log('pics!', pics);
-    // get images.json file from bucket
-    const imagesJson = await client.getObject({ Bucket: 'arn:aws:s3:us-west-2:047507167948:accesspoint/imagejson', Key: 'images.json' }); // try this new way
+
+    // TODO: get images.json file from bucket
+    const imagesJson = await client.getObject({ Bucket: 'arn:aws:s3:us-west-2:047507167948:accesspoint/imagejson', Key: 'images.json' });
     console.log('imagesJSON', imagesJson);
 
     // TODO: re-write images.json file with new pics array 
