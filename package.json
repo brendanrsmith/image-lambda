@@ -1,0 +1,24 @@
+{
+  "name": "image-lambda",
+  "version": "1.0.0",
+  "description": "## Project: Image-lambda",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendigler/image-lambda.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendigler/image-lambda/issues"
+  },
+  "homepage": "https://github.com/brendigler/image-lambda#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.15.0"
+  }
+}
