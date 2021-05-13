@@ -9,7 +9,13 @@
 - [images.json](https://brs-lab-17.s3-us-west-2.amazonaws.com/images.json)
 - [Pull Request](https://github.com/brendigler/image-lambda/pull/1)
 
-### Issues
+### images.json
+
+![results](results.png)
+
+### issues
+
+I still have my images.json file showing up in my initial read of the bucket contents. This should be filtered out at some point.
 
 <!-- ### Setup
 <!-- 
