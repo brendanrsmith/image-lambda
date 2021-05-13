@@ -24,14 +24,20 @@ exports.handler = async (event, context, callback) => {
       }
     })
     console.log('pics!', pics);
-
+    const picJSON = JSON.stringify(pics, null, 2);
     // TODO: get images.json file from bucket
     const imagesJson = await client.getObject({ Bucket: bucket, Key: 'images.json' });
     console.log('imagesJSON', imagesJson);
 
     // TODO: re-write images.json file with new pics array 
-
+    const params = {
+      Bucket: bucket,
+      Key: 'images.json',
+      Body: picJSON
+    }
     // TODO: upload new images.json file back to S3
+    const updateJson = await client.putObject(params);
+    console.log('updatedJSON', updateJson);
 
   } catch (error) {
     console.log(error);
