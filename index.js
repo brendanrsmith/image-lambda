@@ -1,7 +1,9 @@
 'use strict';
 
+require('dotenv').config();
+
 const { S3 } = require ('@aws-sdk/client-s3');
-const client = new S3({ region: 'us-west-2', aws_access_key_id: 'AKIAQWD5F3LGKMR4QWWI', aws_secret_access_key: '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' })
+const client = new S3({ region: 'us-west-2', aws_access_key_id: process.env.AWS_ID, aws_secret_access_key: process.env.AWS_SECRET })
 
 exports.handler = async (event, context, callback) => {
 
